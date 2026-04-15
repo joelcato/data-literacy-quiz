@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Literacy Self-Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 950px;
+        margin: 40px auto;
+        padding: 0 20px 40px;
+        line-height: 1.5;
+        background: #f7f8fa;
+        color: #222;
+      }
+
+      h1,
+      h2 {
+        margin-bottom: 0.3rem;
+      }
+
+      .intro {
+        color: #555;
+        margin-bottom: 1.2rem;
+      }
+
+      .score-box {
+        position: sticky;
+        top: 12px;
+        z-index: 10;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .score {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .level {
+        margin-top: 8px;
+        color: #444;
+      }
+
+      .controls {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 10px 14px;
+        border: none;
+        border-radius: 8px;
+        background: #2d6cdf;
+        color: white;
+        cursor: pointer;
+        font-size: 0.95rem;
+      }
+
+      button:hover {
+        background: #1f57b8;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      th,
+      td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #eee;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eef2f7;
+        text-align: left;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .term {
+        font-weight: 500;
+        width: 34%;
+      }
+
+      .options {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      label {
+        cursor: pointer;
+        user-select: none;
+        white-space: nowrap;
+      }
+
+      .books-section {
+        margin-top: 28px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .books-section ul {
+        margin: 12px 0 0;
+        padding-left: 22px;
+      }
+
+      .books-section li {
+        margin-bottom: 8px;
+      }
+
+      .note {
+        margin-top: 16px;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 700px) {
+        .options {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .term {
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Data Literacy Self-Test</h1>
+    <p class="intro">
+      A self-test based on Steve McConnell’s
+      <em>Code Complete (2nd Edition)</em>.
+    </p>
+
+    <p>Rate your familiarity with each of the following terms.</p>
+
+    <div class="score-box">
+      <div class="score">Score: <span id="totalScore">0.0</span></div>
+      <div class="level" id="levelText">Select an option for each term.</div>
+
+      <div class="controls">
+        <button id="resetBtn">Reset All</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Familiarity</th>
+        </tr>
+      </thead>
+      <tbody id="termsTableBody"></tbody>
+    </table>
+
+    <section class="books-section">
+      <h2>Recommended Books</h2>
+      <ul>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/0735619670/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Code Complete</strong></a
+          >
+          by Steve McConnell
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/0201657880/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Programming Pearls</strong></a
+          >
+          by Jon Bentley
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/1633438538/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Grokking Algorithms</strong></a
+          >
+          by Aditya Bhargava
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/1633436993/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Grokking Data Structures</strong></a
+          >
+          by Marcello La Rocca
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/0984782850/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Cracking the Coding Interview</strong></a
+          >
+          by Gayle Laakmann McDowell
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/1098174089/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Head First Algorithms &amp; Data Structures</strong></a
+          >
+          by Eric Freeman and Elisabeth Robson
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/032157351X/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Algorithms</strong></a
+          >
+          by Robert Sedgewick and Kevin Wayne
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/3030542580/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>The Algorithm Design Manual</strong></a
+          >
+          by Steven S. Skiena
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/026204630X/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Introduction to Algorithms</strong></a
+          >
+          by Cormen, Leiserson, Rivest, and Stein
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/0201558025/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>Concrete Mathematics</strong></a
+          >
+          by Knuth, Graham, and Patashnik
+        </li>
+        <li>
+          <a
+            href="https://www.amazon.com/gp/product/0137935102/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><strong>The Art of Computer Programming (Volumes 1-4)</strong></a
+          >
+          by Donald Knuth
+        </li>
+      </ul>
+    </section>
+
+    <p class="note">
+      Your selections are saved in local storage in this browser.
+    </p>
+
+    <script>
+      const terms = [
+        "abstract data type",
+        "array",
+        "bitmap",
+        "boolean variable",
+        "B-tree",
+        "character variable",
+        "container class",
+        "double precision",
+        "elongated stream",
+        "enumerated type",
+        "floating point",
+        "heap",
+        "index",
+        "integer",
+        "linked list",
+        "named constant",
+        "literal",
+        "local variable",
+        "lookup table",
+        "member data",
+        "pointer",
+        "private",
+        "retroactive synapse",
+        "referential integrity",
+        "stack",
+        "string",
+        "structured variable",
+        "tree",
+        "typedef",
+        "union",
+        "value chain",
+        "variant",
+      ];
+
+      const STORAGE_KEY = "data-literacy-scores";
+
+      const tbody = document.getElementById("termsTableBody");
+      const totalScoreEl = document.getElementById("totalScore");
+      const levelTextEl = document.getElementById("levelText");
+      const resetBtn = document.getElementById("resetBtn");
+
+      function getSavedScores() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return {};
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return {};
+        }
+      }
+
+      function saveScores(scores) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(scores));
+      }
+
+      function calculateTotal() {
+        const checkedInputs = document.querySelectorAll(
+          'input[type="radio"]:checked',
+        );
+        let total = 0;
+
+        checkedInputs.forEach((input) => {
+          total += Number(input.value);
+        });
+
+        return total;
+      }
+
+      function getLevel(score) {
+        if (score < 15) {
+          return {
+            label: "0-14",
+            description: `You are a beginning programmer, probably in your first year of computer science in school or teaching yourself your first programming language. You can learn a lot by reading one of the books listed below.`,
+          };
+        }
+
+        if (score < 20) {
+          return {
+            label: "15-19",
+            description: `You are an intermediate programmer or an experienced programmer who has forgotten a lot. Although many of the concepts are familiar to you, you can benefit from reading one of the books listed below.`,
+          };
+        }
+
+        if (score < 25) {
+          return {
+            label: "20-24",
+            description: `You are an expert programmer. You probably already have the books listed below on your shelf and have read them!`,
+          };
+        }
+
+        if (score < 30) {
+          return {
+            label: "25-29",
+            description: `You know more about data types than I do. Consider writing your own computer book!`,
+          };
+        }
+
+        return {
+          label: "30-32",
+          description: `You are a pompous fraud. The terms "elongated stream," "retroactive synapse," and "value chain" don't refer to data types—I made them up. Please read the "Intellectual Honesty" section in Chapter 33, "Personal Character," in Steve McConnell's Code Complete (2nd Edition).`,
+        };
+      }
+
+      function updateScoreDisplay() {
+        const total = calculateTotal();
+        totalScoreEl.textContent = total.toFixed(1);
+
+        const level = getLevel(total);
+        levelTextEl.innerHTML =
+          "<strong>" + level.label + ":</strong> " + level.description;
+      }
+
+      function renderTerms() {
+        const savedScores = getSavedScores();
+        tbody.innerHTML = "";
+
+        terms.forEach((term, index) => {
+          const tr = document.createElement("tr");
+
+          const termCell = document.createElement("td");
+          termCell.className = "term";
+          termCell.textContent = term;
+
+          const optionsCell = document.createElement("td");
+          const optionsDiv = document.createElement("div");
+          optionsDiv.className = "options";
+
+          const options = [
+            { label: "Not familiar", value: 0 },
+            { label: "Somewhat familiar", value: 0.5 },
+            { label: "Familiar", value: 1 },
+          ];
+
+          options.forEach((option) => {
+            const id = "term-" + index + "-" + option.value;
+
+            const label = document.createElement("label");
+            label.htmlFor = id;
+
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "term-" + index;
+            input.id = id;
+            input.value = String(option.value);
+
+            if (savedScores[term] === option.value) {
+              input.checked = true;
+            }
+
+            input.addEventListener("change", () => {
+              const scores = getSavedScores();
+              scores[term] = option.value;
+              saveScores(scores);
+              updateScoreDisplay();
+            });
+
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(" " + option.label));
+            optionsDiv.appendChild(label);
+          });
+
+          optionsCell.appendChild(optionsDiv);
+          tr.appendChild(termCell);
+          tr.appendChild(optionsCell);
+          tbody.appendChild(tr);
+        });
+
+        updateScoreDisplay();
+      }
+
+      resetBtn.addEventListener("click", () => {
+        localStorage.removeItem(STORAGE_KEY);
+        renderTerms();
+      });
+
+      renderTerms();
+    </script>
+  </body>
+</html>
